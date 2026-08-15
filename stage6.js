@@ -26,10 +26,10 @@
   function sync(){
    $('rk6Obs1').textContent=seen.m?'完成':'尚未';$('rk6Obs2').textContent=seen.s?'完成':'尚未';$('rk6Obs3').textContent=seen.h?'完成':'尚未';
   }
-  $('rk6Magnify').onclick=()=>{seen.m=true;scene.classList.add('magnify');result.innerHTML='🔍 <b>放大觀察：</b>可看見顆粒大小、晶體形狀與光澤差異。';sync()};
-  $('rk6Streak').onclick=()=>{seen.s=true;scene.classList.add('streak');result.innerHTML='▭ <b>條痕測試：</b>礦物在條痕板上留下粉末顏色；條痕色可能和外觀顏色不同。';sync()};
-  $('rk6Hard').onclick=()=>{seen.h=true;scene.classList.add('hardness');result.innerHTML='✦ <b>硬度比較：</b>用不同材料刮擦，觀察是否留下刮痕，可比較相對硬度。';sync()};
-  $('rk6Reset').onclick=()=>{seen={m:false,s:false,h:false};scene.classList.remove('magnify','streak','hardness');result.textContent='先選擇一種檢驗工具。';sync()};
+  $('rk6Magnify').onclick=()=>{seen.m=true;scene.classList.remove('rk6-streakactive','rk6-hardactive');scene.classList.add('rk6-magactive');result.innerHTML='🔍 <b>放大觀察：</b>可看見顆粒大小、晶體形狀與光澤差異。';sync()};
+  $('rk6Streak').onclick=()=>{seen.s=true;scene.classList.remove('rk6-magactive','rk6-hardactive');scene.classList.add('rk6-streakactive');result.innerHTML='▭ <b>條痕測試：</b>礦物在條痕板上留下粉末顏色；條痕色可能和外觀顏色不同。';sync()};
+  $('rk6Hard').onclick=()=>{seen.h=true;scene.classList.remove('rk6-magactive','rk6-streakactive');scene.classList.add('rk6-hardactive');result.innerHTML='✦ <b>硬度比較：</b>用不同材料刮擦，觀察是否留下刮痕，可比較相對硬度。';sync()};
+  $('rk6Reset').onclick=()=>{seen={m:false,s:false,h:false};scene.classList.remove('rk6-magactive','rk6-streakactive','rk6-hardactive');result.textContent='先選擇一種檢驗工具。';sync()};
   sync();
  };
 })();
