@@ -1,1 +1,112 @@
-<!doctype html><html lang="zh-Hant"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>六年級上學期自然｜互動科學實驗室</title><link rel="stylesheet" href="style.css"></head><body><header><div class="top"><div class="brand">🔬 六上自然｜互動科學實驗室</div><div class="top-actions"><input id="studentName" placeholder="學生姓名"><input id="groupName" placeholder="小組"><button id="teacherBtn" class="btn teal">👩‍🏫 教師專區</button></div></div></header><main class="wrap"><section class="hero"><div><h1>科學探究總部</h1><p>第二階段升級版：每一關都加入更明顯的動畫、參數操作、觀察紀錄、概念回饋與下一關按鈕。操作不是裝飾，而是用來找證據。</p><div class="tags"><span>🔥 熱</span><span>🌦️ 天氣</span><span>🏞️ 大地</span><span>🧲 電磁</span></div></div><div class="progress-card"><b>學期總進度</b><div class="big-num"><span id="doneCount">0</span>/12</div><div class="bar"><span id="progressFill"></span></div><div>⭐ <span id="score">0</span>/120</div><div id="rank">目前稱號：科學見習生</div></div></section><section id="unitCards" class="unit-cards"></section><section id="lab" class="lab"><div class="lab-head"><div><div class="crumb">互動任務</div><h2 id="labTitle"></h2></div><button id="homeBtn" class="btn">回單元首頁</button></div><div id="missionTabs" class="tabs"></div><div id="missionPanel"></div></section><section id="semesterFinal" class="semester-final locked"><h2>🏆 六上科學大挑戰</h2><p>完成 12 個任務後解鎖，整合四單元核心概念。</p><button id="finalBtn" class="btn" disabled>🔒 尚未解鎖</button><div id="finalBox"></div><div id="certificate" class="certificate"><div class="medal">🎓🏆</div><h2>六上自然科學研究員證書</h2><div id="certName" class="cert-name">同學</div><p>已完成《六年級上學期自然｜互動科學實驗室》四大單元與學期總挑戰。</p><button class="btn teal" onclick="window.print()">🖨️ 列印證書</button></div></section></main><div class="hud">⭐ <span id="hudScore">0</span>/120</div><div id="teacherModal" class="modal"><div class="teacher-sheet"><div class="modal-head"><div><h2>👩‍🏫 教師正式版｜教學控制台</h2><p>操作模擬 → 要求學生說出證據 → 再連回實體實驗。</p></div><button id="closeTeacher" class="btn">關閉</button></div><div class="teacher-grid"><div class="teacher-box"><h3>課堂使用原則</h3><ul><li>先預測，再操作，不先公布答案。</li><li>答對後追問：「你看到什麼證據？」</li><li>模擬用來建立模型，重要實驗仍建議實作。</li><li>兩人一機：一人操作、一人紀錄，再交換。</li></ul></div><div class="teacher-box"><h3>形成性評量句型</h3><p>「我原本預測＿＿；操作後我觀察到＿＿；所以我認為＿＿，因為＿＿。」</p><button id="unlockAll" class="btn teal">解鎖全部任務</button><button id="resetProgress" class="btn danger">清除學生進度</button></div><div class="teacher-box"><h3>第二階段重點</h3><ul><li>河流關：坡度＋水量雙變因，直接顯示侵蝕、搬運、堆積強度。</li><li>天氣關：露／霜溫度切換、水循環動畫、鋒面與颱風決策。</li><li>電磁關：磁針偏轉、線圈圈數與電池數量共同影響磁力。</li><li>答對後不再自動重載，會保留解析並出現「下一關」。</li></ul></div><div class="teacher-box"><h3>教師答案</h3><button id="toggleKey" class="btn">顯示／隱藏答案</button><div id="answerKey" class="answer-key"><p><b>Unit 1：</b>受熱膨脹；熱由高溫處往低溫處；真空層可減少傳導與對流。</p><p><b>Unit 2：</b>霜形成條件低於0℃；水循環包含蒸發／蒸散、凝結、降水；冷暖氣團交界形成鋒面；颱風常帶來強風豪雨。</p><p><b>Unit 3：</b>坡度與水量增加時侵蝕、搬運更明顯；下游流速變慢處堆積較明顯；岩石由礦物組成；地震時趴下、掩護、穩住。</p><p><b>Unit 4：</b>地球具有地磁；通電產生磁性；增加線圈圈數與串聯電池數量通常可增強電磁鐵磁力。</p></div></div></div></div></div><script src="app.js"></script></body></html>
+<!doctype html>
+<html lang="zh-Hant">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>六年級上學期自然｜互動科學實驗室</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<header>
+  <div class="top">
+    <div class="brand">🔬 六上自然｜互動科學實驗室</div>
+    <div class="top-actions">
+      <input id="studentName" placeholder="學生姓名">
+      <input id="groupName" placeholder="小組">
+      <button id="teacherBtn" class="btn teal">👩‍🏫 教師專區</button>
+    </div>
+  </div>
+</header>
+
+<main class="wrap">
+  <section class="hero">
+    <div>
+      <div class="phase-badge">✨ 第三階段｜全站動畫精緻化</div>
+      <h1>科學探究總部</h1>
+      <p>每一關都不是「看圖答題」：調整變因、播放過程、觀察動畫、記錄證據，再做科學判斷。四大單元共 12 個互動實驗室。</p>
+      <div class="tags"><span>🔥 熱</span><span>🌦️ 天氣</span><span>🏞️ 大地</span><span>🧲 電磁</span></div>
+    </div>
+    <div class="progress-card">
+      <b>學期總進度</b>
+      <div class="big-num"><span id="doneCount">0</span>/12</div>
+      <div class="bar"><span id="progressFill"></span></div>
+      <div>⭐ <span id="score">0</span>/120</div>
+      <div id="rank">目前稱號：科學見習生</div>
+    </div>
+  </section>
+
+  <section id="unitCards" class="unit-cards"></section>
+
+  <section id="lab" class="lab">
+    <div class="lab-head">
+      <div><div class="crumb">互動任務</div><h2 id="labTitle"></h2></div>
+      <button id="homeBtn" class="btn">回單元首頁</button>
+    </div>
+    <div id="missionTabs" class="tabs"></div>
+    <div id="missionPanel"></div>
+  </section>
+
+  <section id="semesterFinal" class="semester-final locked">
+    <h2>🏆 六上科學大挑戰</h2>
+    <p>完成 12 個任務後解鎖，整合四單元核心概念。</p>
+    <button id="finalBtn" class="btn" disabled>🔒 尚未解鎖</button>
+    <div id="finalBox"></div>
+    <div id="certificate" class="certificate">
+      <div class="medal">🎓🏆</div>
+      <h2>六上自然科學研究員證書</h2>
+      <div id="certName" class="cert-name">同學</div>
+      <p>已完成《六年級上學期自然｜互動科學實驗室》四大單元與學期總挑戰。</p>
+      <button class="btn teal" onclick="window.print()">🖨️ 列印證書</button>
+    </div>
+  </section>
+</main>
+
+<div class="hud">⭐ <span id="hudScore">0</span>/120</div>
+
+<div id="teacherModal" class="modal">
+  <div class="teacher-sheet">
+    <div class="modal-head">
+      <div><h2>👩‍🏫 教師正式版｜教學控制台</h2><p>操作模擬 → 說出證據 → 回到實體實驗 → 建構科學概念。</p></div>
+      <button id="closeTeacher" class="btn">關閉</button>
+    </div>
+    <div class="teacher-grid">
+      <div class="teacher-box">
+        <h3>第三階段教學設計</h3>
+        <ul>
+          <li>每關至少有一項「可控制變因」或「可播放過程」。</li>
+          <li>動畫中的變化就是作答證據，不只是裝飾。</li>
+          <li>答對後保留解析與觀察結果，不再自動重載。</li>
+          <li>第二單元水循環採「一滴水的旅程」逐步動畫；颱風改成三階段決策任務。</li>
+        </ul>
+      </div>
+      <div class="teacher-box">
+        <h3>形成性評量句型</h3>
+        <p>「我改變了＿＿；我觀察到＿＿；所以我推論＿＿；我的證據是＿＿。」</p>
+        <button id="unlockAll" class="btn teal">解鎖全部任務</button>
+        <button id="resetProgress" class="btn danger">清除學生進度</button>
+      </div>
+      <div class="teacher-box">
+        <h3>操作建議</h3>
+        <ul>
+          <li>先遮住右側問題，只讓學生操作 1–2 分鐘。</li>
+          <li>兩人一機：一人操作、一人說出觀察，再交換。</li>
+          <li>模擬不可取代實體探究；可用於預測、重播不可見過程與課後統整。</li>
+        </ul>
+      </div>
+      <div class="teacher-box">
+        <h3>教師答案</h3>
+        <button id="toggleKey" class="btn">顯示／隱藏答案</button>
+        <div id="answerKey" class="answer-key">
+          <p><b>Unit 1：</b>受熱通常膨脹；熱由高溫處往低溫處；真空層減少傳導與對流。</p>
+          <p><b>Unit 2：</b>霜在物體溫度低於 0℃ 時形成；水循環包含蒸發／蒸散、凝結、降水與回到地表；冷暖氣團交界形成鋒面；颱風前、中、後都要採取適當防災行動。</p>
+          <p><b>Unit 3：</b>坡度較陡時侵蝕、搬運較明顯；岩石由礦物組成；地震時趴下、掩護、穩住。</p>
+          <p><b>Unit 4：</b>地球具有地磁；通電可產生磁性；線圈圈數、串聯電池數量會影響電磁鐵磁力。</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script src="app.js"></script>
+</body>
+</html>
