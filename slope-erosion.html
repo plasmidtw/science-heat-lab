@@ -1,0 +1,116 @@
+<!doctype html><html lang="zh-Hant"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>坡度工程師｜泥沙堆積強化投影版</title><style>
+:root{--ink:#183c43;--muted:#516c73;--orange:#e56b36;--blue:#1285b5;--sage:#257e68;--line:#c8dce0}
+*{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;background:#f5f9f8;font-family:"Noto Sans TC","Microsoft JhengHei",system-ui,sans-serif;color:var(--ink)}button,input{font:inherit}button{cursor:pointer}button:disabled{opacity:.4;cursor:not-allowed}.wrap{max-width:1800px;margin:auto;padding:15px 22px 32px}.masthead{display:flex;align-items:center;justify-content:space-between;gap:16px;background:#fff;border:2px solid #e0eae7;border-radius:20px;padding:14px 22px}.eyebrow{color:#a65d2d;font-size:15px;font-weight:800}.masthead h1{font-size:clamp(29px,2.5vw,45px);line-height:1.1;margin:3px 0}.masthead p{font-size:19px;margin:0;font-weight:650}.btn{border:0;background:#e5eef0;color:#1d505d;border-radius:13px;padding:12px 19px;font-weight:850;font-size:20px;white-space:nowrap;min-height:51px}.btn:hover:not(:disabled){filter:brightness(.96)}.btn.primary{background:#e96b34;color:white}.btn.blue{background:#147fa9;color:white}.btn.outline{border:2px solid #b8cdd0;background:#fff}.buttons{display:flex;gap:10px;flex-wrap:wrap}.controls{display:grid;grid-template-columns:1fr 1fr .9fr;gap:12px;margin:14px 0}.control{background:#fff;border:2px solid var(--line);border-radius:17px;padding:11px 18px}.control label{display:flex;justify-content:space-between;align-items:center;gap:9px;font-size:22px;font-weight:900}.control output{font-size:30px;color:#b95832}.control.blue output{color:#0d7da6}.control input{width:100%;height:26px;accent-color:#de743e;margin:8px 0 0}.control.blue input{accent-color:#187eab}.control small{font-size:15px;color:var(--muted);font-weight:600}.board{display:grid;grid-template-columns:1fr 1fr;gap:15px}.slope{background:#fff;border:3px solid #b9d6de;border-radius:20px;overflow:hidden;min-width:0}.slope:first-child{border-color:#efb08e}.slope-title{padding:9px 17px;display:flex;justify-content:space-between;align-items:center;font-size:25px;font-weight:900;background:#fff0e7}.slope.right .slope-title{background:#e4f3fa}.slope-title .angle{font-size:26px}.slope canvas{display:block;width:100%;height:auto;aspect-ratio:720/390;background:#e8f6fd}.under{display:grid;grid-template-columns:1fr 1fr 1fr;gap:6px;padding:10px 12px 12px;border-top:2px solid #e3eaeb}.numberbox{text-align:center;border-radius:13px;background:#f6f7f4;padding:8px 2px}.numberbox strong{display:block;font-size:clamp(22px,2vw,34px);line-height:1.1}.numberbox span{font-size:15px;color:#506970;font-weight:750}.numberbox:nth-child(1) strong{color:#b7502b}.numberbox:nth-child(2) strong{color:#137fa7}.numberbox:nth-child(3) strong{color:#4a8352}.toolbar{display:flex;justify-content:space-between;align-items:center;gap:12px;background:#fff;border:2px solid #d9e7e4;border-radius:18px;padding:12px 17px;margin-top:14px;flex-wrap:wrap}.toolbar .buttons .btn{font-size:21px}.status{font-size:18px;font-weight:750;flex:1;min-width:280px}.progress{height:12px;background:#dfeaed;border-radius:9px;overflow:hidden;margin-top:9px}.progress>i{height:100%;width:0;display:block;background:#169cc7}.reveal{margin-top:12px;border:3px solid #c7e1d5;border-radius:19px;padding:14px 20px;background:#f0faf3;display:none}.reveal.visible{display:block}.reveal h2{font-size:27px;margin:0 0 6px}.reveal .answer{font-size:clamp(23px,2.2vw,35px);font-weight:900;color:#245f51}.reveal p{font-size:18px;margin:7px 0 0}.bottom{display:grid;grid-template-columns:1fr auto;gap:10px;align-items:center;margin-top:10px}.tip{color:#526f71;font-size:15px;line-height:1.5}.note{background:#fff8ec;border-left:6px solid #e4a44d;border-radius:8px;padding:11px 15px;font-size:18px;font-weight:750;margin-top:11px}.hide{display:none!important}.fullscreen:fullscreen{overflow:auto;background:#f5f9f8}.fullscreen:fullscreen .wrap{max-width:100%;padding:12px 26px}.quiz{margin-top:12px;background:white;border-radius:16px;border:2px solid #dae8e4;padding:10px 18px;font-size:20px;font-weight:780}.quiz b{color:#b45b30}.quiz .choices{display:flex;gap:10px;flex-wrap:wrap;margin-top:8px}.quiz button{font-size:18px;padding:9px 16px}.quizresult{color:#1b7561;margin-left:10px;font-weight:800}.extra{border:0;background:transparent;color:#416e73;text-decoration:underline;font-size:15px;cursor:pointer;padding:5px}.teacher-notes{font-size:16px;background:#fff;padding:14px;border-radius:14px;border:1px solid #c9dcd9;margin-top:8px}body.project .eyebrow,body.project .tip,body.project .note,body.project .quiz{display:none}body.project .wrap{padding:8px 15px 16px}body.project .masthead{padding:8px 16px}body.project .masthead h1{font-size:33px}body.project .masthead p{font-size:16px}body.project .controls{margin:8px 0;gap:8px}body.project .control{padding:6px 15px}body.project .control label{font-size:19px}body.project .control output{font-size:24px}body.project .control small{display:none}body.project .slope-title{padding:5px 14px}body.project .under{padding:5px 10px}body.project .toolbar{margin-top:9px;padding:8px 12px}body.project .btn{padding:9px 16px;min-height:44px}body.project .reveal{padding:9px 16px;margin-top:8px}@media(max-width:850px){.controls{grid-template-columns:1fr}.board{grid-template-columns:1fr}.wrap{padding:8px}.masthead{display:block}.buttons{margin-top:9px}.control label{font-size:18px}.control output{font-size:23px}}@media print{body{background:white}.buttons,.quiz,.tip,.extra{display:none}.wrap{max-width:100%}.board{grid-template-columns:1fr 1fr}}
+</style></head><body><div class="fullscreen" id="fullscreen"><main class="wrap">
+<header class="masthead"><div><div class="eyebrow">翰林六年級自然｜第三單元・土堆坡度與流水</div><h1>⛰️ 坡度工程師：陡坡與緩坡大對決</h1><p>同樣的雨量，不同的坡度，哪一側的土壤被沖走得更多？</p></div><div class="buttons"><button id="project" class="btn outline">🖥️ 簡潔投影</button><button id="full" class="btn outline">⛶ 全螢幕</button></div></header>
+<section class="controls" aria-label="調整條件"><div class="control"><label for="left">🟠 左側坡度 <output id="lv">36°</output></label><input id="left" type="range" min="5" max="45" step="1" value="36"><small>調整陡坡或緩坡（5°～45°）</small></div><div class="control blue"><label for="right">🔵 右側坡度 <output id="rv">12°</output></label><input id="right" type="range" min="5" max="45" step="1" value="12"><small>左右使用相同土質與雨量</small></div><div class="control"><label for="rain">🌧️ 雨量強度 <output id="rainv">中雨</output></label><input id="rain" type="range" min="1" max="3" step="1" value="2"><small>兩側同時降雨；公平比較時維持相同雨量</small></div></section>
+<section class="board"><article class="slope"><div class="slope-title"><span>🟠 左側土堆</span><span id="labL" class="angle">36°・陡坡</span></div><canvas id="canvasL" width="720" height="390" aria-label="左側坡度與土壤侵蝕示意圖"></canvas><div class="under"><div class="numberbox"><strong id="erL">—</strong><span>侵蝕相對指標</span></div><div class="numberbox"><strong id="trL">—</strong><span>搬運相對指標</span></div><div class="numberbox"><strong id="deL">—</strong><span>坡腳附近堆積比例</span></div></div></article><article class="slope right"><div class="slope-title"><span>🔵 右側土堆</span><span id="labR" class="angle">12°・緩坡</span></div><canvas id="canvasR" width="720" height="390" aria-label="右側坡度與土壤侵蝕示意圖"></canvas><div class="under"><div class="numberbox"><strong id="erR">—</strong><span>侵蝕相對指標</span></div><div class="numberbox"><strong id="trR">—</strong><span>搬運相對指標</span></div><div class="numberbox"><strong id="deR">—</strong><span>坡腳附近堆積比例</span></div></div></article></section>
+<section class="toolbar"><div class="buttons"><button id="start" class="btn primary">🌧️ 開始降雨</button><button id="pause" class="btn blue" disabled>⏸ 暫停</button><button id="reset" class="btn">↺ 重新實驗</button><button id="reveal" class="btn outline" disabled>👁 顯示比較答案</button></div><div class="status" id="status" aria-live="polite">先調整兩側坡度，請全班預測哪一側侵蝕較明顯。</div></section><div class="progress"><i id="progress"></i></div>
+<div class="reveal" id="answer"><h2>🔍 觀察結果</h2><div class="answer" id="answerText"></div><p id="explain"></p></div>
+<div class="quiz" id="quiz">🙋 <b>全班先預測：</b> 哪一側土堆的侵蝕作用會比較明顯？<div class="choices"><button class="btn" data-pred="L">🟠 左側</button><button class="btn" data-pred="R">🔵 右側</button><button class="btn" data-pred="E">⚖️ 差不多</button><span id="choice" class="quizresult"></span></div></div>
+<div class="bottom"><div class="tip">橘紅凹溝＝侵蝕位置；藍色水珠＝流動的水；棕色顆粒＝搬運泥沙；坡腳土堆＝堆積。模擬結果是教學示意，不是真實測量。</div><div class="buttons"><button id="save" class="btn outline">📸 儲存比較圖</button><button id="notesBtn" class="extra">教師說明 ▾</button></div></div><div id="notes" class="teacher-notes hide">建議先用 36° 對 12° 示範，雨量選「中雨」，讓學生先預測。接著按「開始降雨」，比較橘色凹溝與原始坡面虛線。按「顯示比較答案」公布結果。再將兩側調成相同角度做第二回合。<br>科學提醒：坡度影響水流，但實際侵蝕及堆積同時受到雨量、土壤顆粒、植被、初始坡形等影響。此圖僅模擬坡度改變的常見趨勢，所有數值均為示意性相對指標。</div><div class="note">💡 教學核心：坡度較陡時，水流通常較快，侵蝕與搬運較明顯；坡度較緩時，泥沙比較容易在坡腳附近堆積。</div>
+</main></div>
+<script>
+(()=>{'use strict';const $=id=>document.getElementById(id);const cvs=[$('canvasL'),$('canvasR')];const ctxs=cvs.map(c=>c.getContext('2d'));const names=['左側','右側'];const state={running:false,paused:false,done:false,progress:0,frame:0,last:0,raf:0,show:false,pred:''};const rainNames=['','小雨','中雨','大雨'];const clamp=(v,a,b)=>Math.min(b,Math.max(a,v));const lerp=(a,b,t)=>a+(b-a)*t;const params=()=>({l:+$('left').value,r:+$('right').value,rain:+$('rain').value});const fseed=i=>{let x=Math.sin(i*137.55+31.3)*18329.49;return x-Math.floor(x)};
+function calc(angle,rain){let a=(angle-5)/40,r=[0,.7,1,1.34][rain];return {erosion:Math.round(clamp((18+65*Math.pow(a,1.24))*r,0,100)),transport:Math.round(clamp((14+72*Math.pow(a,1.15))*Math.pow(r,.33),0,100)),near:Math.round(clamp(82-54*a-8*(r-1),15,94))};}
+function line(ctx,x,y,xx,yy,color,width=2,dash=[]){ctx.beginPath();ctx.setLineDash(dash);ctx.moveTo(x,y);ctx.lineTo(xx,yy);ctx.lineWidth=width;ctx.strokeStyle=color;ctx.stroke();ctx.setLineDash([])}
+function text(ctx,str,x,y,size=20,color='#214855',align='left'){ctx.font=`800 ${size}px "Microsoft JhengHei",sans-serif`;ctx.textAlign=align;ctx.fillStyle=color;ctx.fillText(str,x,y);ctx.textAlign='left'}
+function pill(ctx,x,y,w,h,str,bg,fg,size=20){ctx.fillStyle=bg;ctx.beginPath();ctx.roundRect(x,y,w,h,11);ctx.fill();text(ctx,str,x+w/2,y+h/2+size*.36,size,fg,'center')}
+function surface(x,a,e,p,seed){const t=clamp((x-65)/425,0,1),topY=274-(38+a*4.25);const base=284;let y=lerp(topY,base,t); if(p>0){const wave=(Math.pow(Math.max(0,Math.sin(t*Math.PI*8.5+seed*.4)),3)*.58+Math.pow(Math.max(0,Math.sin(t*Math.PI*14.8+seed)),6)*.42);const growth=(.07+.9*t)*p; const loss=4+(e/100)*39; y+=loss*growth*(.35+wave); }return y;}
+function draw(side){let p=params(),angle=side===0?p.l:p.r;let metrics=calc(angle,p.rain),other=calc(side===0?p.r:p.l,p.rain);let ctx=ctxs[side],W=720,H=390,progress=state.progress;ctx.clearRect(0,0,W,H);let sky=ctx.createLinearGradient(0,0,0,H);sky.addColorStop(0,'#d4effb');sky.addColorStop(1,'#f4f9ef');ctx.fillStyle=sky;ctx.fillRect(0,0,W,H);
+// visual reference baseline and permanent soil cutaway
+ctx.fillStyle='#e0dfc1';ctx.fillRect(0,293,W,97);ctx.fillStyle='#7bbf83';ctx.fillRect(0,290,W,7);
+const topY=274-(38+angle*4.25);const surf=x=>surface(x,angle,metrics.erosion,progress,side+1);ctx.beginPath();ctx.moveTo(65,surf(65));for(let x=69;x<=490;x+=4)ctx.lineTo(x,surf(x));ctx.lineTo(490,306);ctx.lineTo(65,306);ctx.closePath();let dirt=ctx.createLinearGradient(0,topY,0,320);dirt.addColorStop(0,'#bd976e');dirt.addColorStop(1,'#8c664b');ctx.fillStyle=dirt;ctx.fill();
+// internal layers for a tangible soil cross section
+for(let k=0;k<4;k++){ctx.beginPath();for(let x=80;x<=480;x+=5){let y=surface(x,angle,0,0,side+1)+18+k*8; if(x===80)ctx.moveTo(x,y);else ctx.lineTo(x,y);}ctx.lineWidth=2;ctx.strokeStyle='rgba(99,66,42,.24)';ctx.stroke();}
+// original contour dashed highlights actual profile reduction (not merely drawn rills)
+if(progress>.02){ctx.beginPath();for(let x=65;x<=490;x+=4){let y=surface(x,angle,0,0,side+1);if(x===65)ctx.moveTo(x,y);else ctx.lineTo(x,y)}ctx.strokeStyle='#e56d3d';ctx.lineWidth=4;ctx.setLineDash([9,6]);ctx.stroke();ctx.setLineDash([]);
+ctx.beginPath();for(let x=65;x<=490;x+=4){let y=surface(x,angle,0,0,side+1);if(x===65)ctx.moveTo(x,y);else ctx.lineTo(x,y)}for(let x=490;x>=65;x-=4)ctx.lineTo(x,surf(x));ctx.closePath();ctx.fillStyle=`rgba(246,99,51,${.3+.23*progress})`;ctx.fill();}
+// textured rills visibly grow in proportion to erosion score
+if(progress>.035){for(let i=0;i<11;i++){let t=.1+fseed(i+20)*.8,x=65+t*425,y=surf(x)+5,depth=(3+11*metrics.erosion/100)*progress*(.4+fseed(i+9));ctx.strokeStyle=`rgba(96,48,30,${.3+.6*progress})`;ctx.lineWidth=1.2+6*metrics.erosion/100*progress;ctx.beginPath();ctx.moveTo(x-12,y-2);ctx.quadraticCurveTo(x,y+depth,x+12,y+depth+5);ctx.stroke()}}
+// Water continues over the flat ground, carrying some sediment farther away.
+if(progress>.025){
+  const waterAlpha=Math.min(.48,.12+.35*progress);
+  ctx.beginPath();ctx.moveTo(490,286);ctx.bezierCurveTo(565,283,637,284,719,281);
+  ctx.lineTo(719,296);ctx.lineTo(490,296);ctx.closePath();ctx.fillStyle=`rgba(51,159,210,${waterAlpha})`;ctx.fill();
+  for(let j=0;j<5;j++){let yy=286+j*2.4;
+    line(ctx,494,yy,716,yy-1,'rgba(29,126,180,.17)',1.3);
+  }
+}
+// Deposition is shown as TWO DISTINCT, STATIONARY PILES.
+// Near/far allocation changes with the slope. Piles remain after rain stops.
+if(progress>.02){
+ const deposited=progress;
+ const nearShare=metrics.near/100, farShare=1-nearShare;
+ const total=22+metrics.erosion*.62;
+ function pile(cx,share,shade){
+   const fraction=Math.max(.01,share);
+   const height=(11+total*.9*Math.sqrt(fraction))*deposited;
+   const halfWidth=(16+25*Math.sqrt(fraction))*Math.min(1,.25+.75*Math.sqrt(deposited));
+   const ground=290;
+   ctx.save();
+   ctx.beginPath();ctx.moveTo(cx-halfWidth,ground);
+   ctx.bezierCurveTo(cx-halfWidth*.8,ground-height*.22,cx-halfWidth*.53,ground-height*.72,cx,ground-height);
+   ctx.bezierCurveTo(cx+halfWidth*.55,ground-height*.77,cx+halfWidth*.8,ground-height*.2,cx+halfWidth,ground);
+   ctx.closePath();
+   const grad=ctx.createLinearGradient(cx,ground-height,cx,ground);
+   if(shade==='near'){grad.addColorStop(0,'#e3b777');grad.addColorStop(1,'#a67544')}
+   else{grad.addColorStop(0,'#ba814e');grad.addColorStop(1,'#825939')}
+   ctx.fillStyle=grad;ctx.fill();ctx.strokeStyle='#754e30';ctx.lineWidth=2.2;ctx.stroke();
+   // Many grains are visibly retained INSIDE the piled-up material.
+   ctx.beginPath();ctx.moveTo(cx-halfWidth,ground);
+   ctx.bezierCurveTo(cx-halfWidth*.8,ground-height*.22,cx-halfWidth*.53,ground-height*.72,cx,ground-height);
+   ctx.bezierCurveTo(cx+halfWidth*.55,ground-height*.77,cx+halfWidth*.8,ground-height*.2,cx+halfWidth,ground);
+   ctx.closePath();ctx.clip();
+   for(let i=0;i<75;i++){
+     const x=cx+(fseed(430+i+cx)*2-1)*halfWidth;
+     const y=ground-fseed(610+i+cx)*(height+2);
+     ctx.beginPath();ctx.ellipse(x,y,1.1+fseed(i+20)*2.8,.9+fseed(i+40)*1.7,0,0,Math.PI*2);
+     ctx.fillStyle=i%3===0?'#f2d0a0':i%3===1?'#65492f':'#d59f60';ctx.fill();
+   }
+   ctx.restore();
+ }
+ pile(541,nearShare,'near');pile(653,farShare,'far');
+}
+// pebbles for visual movement reference and moving water particles
+for(let i=0;i<27;i++){let x=80+fseed(i+12)*400,y=surf(x)+9+fseed(i+44)*10;ctx.fillStyle=i%2?'#6d5848':'#8c7862';ctx.beginPath();ctx.ellipse(x,y,3.4,2.5,0,0,7);ctx.fill()}
+if(state.running&&!state.paused){let time=state.frame/55;for(let i=0;i<75*p.rain;i++){let u=(fseed(i+133)+time*(.13+p.rain*.03))%1,x=68+u*430,y=surf(x)-4-fseed(i+20)*15;ctx.fillStyle=i%4===0?'#795440':'#168fc5';ctx.beginPath();ctx.arc(x,y,1.7+fseed(i+40)*2.2,0,Math.PI*2);ctx.fill()}// Mud grains travel over the flat ground before stopping near or far.
+for(let i=0;i<52;i++){
+ let near=fseed(400+i)<metrics.near/100;
+ let target=near?541:653;
+ let travel=(fseed(i+615)+time*(.19+p.rain*.035))%1;
+ let x=490+(target-490)*travel;
+ let y=281+fseed(i+101)*8;
+ ctx.beginPath();ctx.arc(x,y,2.4+fseed(i+160)*1.8,0,Math.PI*2);
+ ctx.fillStyle=i%3===0?'#7a4a2c':'#aa7047';ctx.fill();
+}
+for(let i=0;i<45*p.rain;i++){let x=14+fseed(i+90)*690,y=(fseed(i+330)*320+state.frame*(2+p.rain*.5))%320;line(ctx,x,y,x-5,y+14,'#379ac8',1.8)}}
+// annotation: precise unobstructed callout at top-left and right
+pill(ctx,18,12,160,42,`坡度 ${angle}°`,'#ffffffed','#24576a',23);
+if(progress>.03){const label=metrics.erosion-other.erosion>2?'侵蝕較強':metrics.erosion-other.erosion< -2?'侵蝕較弱':'侵蝕相近';pill(ctx,208,12,175,43,label,metrics.erosion>other.erosion+2?'#ffdac8':metrics.erosion<other.erosion-2?'#e2f2df':'#edf0f1',metrics.erosion>other.erosion+2?'#b03e20':'#37775a',25)}
+if(progress>.08){const x=280,y=surf(x);pill(ctx,94,72,150,40,'侵蝕凹溝','#fff4e8','#b85231',21);line(ctx,245,93,x-5,y-6,'#c45736',3);ctx.fillStyle='#c45736';ctx.beginPath();ctx.arc(x-5,y-6,5,0,7);ctx.fill()}
+// Separate labels and pointers prevent near/far deposits from being confused.
+if(progress>.02){
+ pill(ctx,497,180,88,35,'近處','#fff0d4','#855323',20);
+ pill(ctx,610,180,88,35,'遠處','#e8d8ca','#75462e',20);
+ line(ctx,541,218,541,238,'#a66e36',2.5);
+ line(ctx,654,218,654,237,'#855033',2.5);
+ ctx.fillStyle='#a66e36';ctx.beginPath();ctx.moveTo(536,237);ctx.lineTo(546,237);ctx.lineTo(541,245);ctx.fill();
+ ctx.fillStyle='#855033';ctx.beginPath();ctx.moveTo(649,236);ctx.lineTo(659,236);ctx.lineTo(654,244);ctx.fill();
+}
+text(ctx,'坡腳',463,358,17,'#52727b');
+text(ctx,'近處堆積',498,340,18,'#865b2c');text(ctx,'遠處堆積',611,340,18,'#70432a');
+if(progress>.04){pill(ctx,196,329,172,33,'橘虛線：原坡面','#fff2e7','#b65234',17)}
+}
+function updateLabels(){let p=params();$('lv').textContent=p.l+'°';$('rv').textContent=p.r+'°';$('rainv').textContent=rainNames[p.rain];for(let [id,a] of [['labL',p.l],['labR',p.r]])$(id).textContent=a+'°・'+(a>=28?'陡坡':a<=17?'緩坡':'中等坡度');draw(0);draw(1)}
+function setNumbers(){let p=params(),m=[calc(p.l,p.rain),calc(p.r,p.rain)];for(let [i,s] of ['L','R'].entries()){ $( 'er'+s).textContent=state.progress?Math.round(m[i].erosion*state.progress):'—';$('tr'+s).textContent=state.progress?Math.round(m[i].transport*state.progress):'—';$('de'+s).textContent=state.done?m[i].near+'%':'—'}}
+function disable(v){for(let id of ['left','right','rain'])$(id).disabled=v}
+function animation(t){if(!state.running||state.paused)return;if(!state.last)state.last=t;let dt=Math.min(60,t-state.last);state.last=t;state.progress=clamp(state.progress+dt/7900,0,1);state.frame++;$('progress').style.width=(state.progress*100)+'%';updateLabels();setNumbers();if(state.progress>=1){finish();return}state.raf=requestAnimationFrame(animation)}
+function start(){if(state.done)reset();if(state.running){if(state.paused)pause();return}state.running=true;state.paused=false;state.last=0;state.show=false;state.progress=0;state.frame=0;$('answer').classList.remove('visible');$('start').disabled=true;$('pause').disabled=false;$('reveal').disabled=true;disable(true);$('status').textContent='🌧️ 降雨中：看泥沙先移動，再分別留在坡腳近處與更遠處！';state.raf=requestAnimationFrame(animation)}
+function finish(){state.running=false;state.done=true;$('start').disabled=true;$('pause').disabled=true;$('reveal').disabled=false;$('status').textContent='✅ 降雨結束：泥沙留在近處、遠處兩座堆積丘。比較兩側哪座較大，再揭曉答案。';setNumbers();updateLabels()}
+function pause(){if(!state.running)return;state.paused=!state.paused;$('pause').textContent=state.paused?'▶ 繼續':'⏸ 暫停';if(!state.paused){state.last=0;state.raf=requestAnimationFrame(animation)}$('status').textContent=state.paused?'⏸️ 已暫停：比較橘色侵蝕區與近、遠兩座泥沙堆積丘。':'🌧️ 降雨繼續。'}
+function reset(){cancelAnimationFrame(state.raf);Object.assign(state,{running:false,paused:false,done:false,progress:0,frame:0,last:0,show:false,pred:''});$('start').disabled=false;$('pause').disabled=true;$('pause').textContent='⏸ 暫停';$('reveal').disabled=true;$('reveal').textContent='👁 顯示比較答案';$('answer').classList.remove('visible');$('progress').style.width='0';$('status').textContent='已重新設定。調整坡度，讓學生先預測再開始降雨。';$('choice').textContent='';document.querySelectorAll('[data-pred]').forEach(b=>{b.style.background='';b.style.color=''});disable(false);updateLabels();setNumbers()}
+function reveal(){if(!state.done)return;state.show=!state.show;$('answer').classList.toggle('visible',state.show);$('reveal').textContent=state.show?'🙈 隱藏比較答案':'👁 顯示比較答案';if(!state.show)return;let p=params(),L=calc(p.l,p.rain),R=calc(p.r,p.rain),res=Math.abs(L.erosion-R.erosion)<=2?'兩側侵蝕程度接近':L.erosion>R.erosion?'左側侵蝕較明顯':'右側侵蝕較明顯';$('answerText').textContent=`${res}｜左側 ${L.erosion}，右側 ${R.erosion}（示意指標）`;$('explain').textContent=`在相同的${rainNames[p.rain]}條件下，比較 ${p.l}° 和 ${p.r}° 的坡面。橘色區域代表相對於原始坡面被移除的土壤；凹陷越明顯，代表模型中的侵蝕越強。留在坡腳附近的泥沙比例（模型）：左側 ${L.near}%，右側 ${R.near}%；其餘移動到較遠處。圖中的兩座堆積丘代表最後留下的泥沙，並非實際測量。實際結果仍受土壤、雨滴與水流條件影響。`;let expected=Math.abs(L.erosion-R.erosion)<=2?'E':L.erosion>R.erosion?'L':'R';$('choice').textContent=state.pred?(expected===state.pred?'✅ 預測符合模型！':'🔎 請比較觀察與原先的推論。'):'🔍 你原先會怎麼預測？'}
+function save(){let c=document.createElement('canvas');c.width=1440;c.height=850;let x=c.getContext('2d');x.fillStyle='#fff';x.fillRect(0,0,1440,850);x.fillStyle='#173d4b';x.font='bold 32px Microsoft JhengHei';x.fillText('坡度工程師｜陡坡與緩坡對照',24,46);let p=params();x.font='bold 23px Microsoft JhengHei';x.fillText(`左側 ${p.l}°`,20,83);x.fillText(`右側 ${p.r}°`,740,83);x.drawImage(cvs[0],0,105);x.drawImage(cvs[1],720,105);let ls=calc(p.l,p.rain),rs=calc(p.r,p.rain);x.fillStyle='#214855';x.font='bold 26px Microsoft JhengHei';x.fillText(`侵蝕指標：${state.done?ls.erosion:'尚未完成'} ｜ 搬運：${state.done?ls.transport:'—'} ｜ 近處堆積比例：${state.done?ls.near+'%':'—'}`,20,542);x.fillText(`侵蝕指標：${state.done?rs.erosion:'尚未完成'} ｜ 搬運：${state.done?rs.transport:'—'} ｜ 近處堆積比例：${state.done?rs.near+'%':'—'}`,740,542);x.font='22px Microsoft JhengHei';x.fillText('教學示意模擬・非實際量測結果',24,611);c.toBlob(blob=>{if(!blob)return;let u=URL.createObjectURL(blob),a=document.createElement('a');a.href=u;a.download='土堆侵蝕_教學投影比較圖.png';a.click();setTimeout(()=>URL.revokeObjectURL(u),1500)})}
+for(let id of ['left','right','rain'])$(id).addEventListener('input',()=>{if(!state.running&&!state.done)updateLabels()});$('start').addEventListener('click',start);$('pause').addEventListener('click',pause);$('reset').addEventListener('click',reset);$('reveal').addEventListener('click',reveal);$('save').addEventListener('click',save);$('project').addEventListener('click',()=>{document.body.classList.toggle('project');$('project').textContent=document.body.classList.contains('project')?'📋 完整教學':'🖥️ 簡潔投影'});$('full').addEventListener('click',async()=>{if(!document.fullscreenElement){try{await $('fullscreen').requestFullscreen()}catch(e){$('status').textContent='此瀏覽器無法進入全螢幕，可按 F11 以瀏覽器全螢幕。'}}else{await document.exitFullscreen()}});$('notesBtn').addEventListener('click',()=>$('notes').classList.toggle('hide'));document.querySelectorAll('[data-pred]').forEach(el=>el.addEventListener('click',()=>{state.pred=el.dataset.pred;$('choice').textContent='已記下預測！';document.querySelectorAll('[data-pred]').forEach(b=>{b.style.background='';b.style.color=''});el.style.background='#cbe9df';el.style.color='#115d50'}));updateLabels();setNumbers();})();
+</script></body></html>
