@@ -1,0 +1,36 @@
+<!doctype html>
+<html lang="zh-Hant"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>3-1 大地的變動與影響｜教學投影片</title>
+<style>
+:root{font-family:"Noto Sans TC","Microsoft JhengHei",system-ui,sans-serif;color:#183b36;background:#edf6f2}
+*{box-sizing:border-box}body{margin:0}.top{display:flex;justify-content:space-between;align-items:center;gap:10px;padding:14px 22px;background:#164e48;color:white;flex-wrap:wrap}.top a{color:white}.outer{max-width:1160px;margin:auto;padding:22px}.slide{min-height:min(68vw,635px);border-radius:26px;background:linear-gradient(140deg,#fff,#eaf6ee);box-shadow:0 12px 35px #164b3d24;padding:clamp(25px,5vw,70px);display:flex;flex-direction:column;justify-content:center;gap:18px}.eyebrow{color:#25836c;font-weight:800;letter-spacing:2px}.slide h1{font-size:clamp(35px,6vw,75px);line-height:1.2;margin:0}.slide h2{font-size:clamp(28px,4.3vw,55px);margin:0}.slide p{font-size:clamp(19px,2.6vw,32px);line-height:1.6;margin:0}.chips{display:flex;flex-wrap:wrap;gap:12px}.chip{display:inline-block;border-radius:16px;background:#d9f0e8;padding:14px 20px;font-weight:750;font-size:clamp(19px,2.3vw,28px)}.foot{display:flex;align-items:center;justify-content:space-between;gap:10px;margin-top:18px;flex-wrap:wrap}button,.link{border:0;border-radius:12px;background:#167a68;color:white;font:inherit;font-weight:800;padding:12px 20px;cursor:pointer;text-decoration:none}button:disabled{opacity:.3;cursor:default}.muted{color:#53756f}.mini{font-size:16px}.scene{font-size:clamp(65px,12vw,145px);line-height:1.3;text-align:center}.two{display:grid;grid-template-columns:1fr 1fr;gap:20px}.panel{background:#ffffffc9;border:2px solid #d4e6dd;padding:22px;border-radius:18px}.panel h3{font-size:clamp(23px,3vw,34px);margin:0 0 12px}.panel p{font-size:clamp(18px,2.2vw,26px)}.progress{height:8px;background:#cce0d9;border-radius:8px;overflow:hidden}.progress span{height:100%;background:#1a8f78;display:block;transition:width .2s}.disclaimer{font-size:13px;color:#607770;margin-top:12px} @media(max-width:700px){.two{grid-template-columns:1fr}.slide{min-height:65vh}}
+</style></head>
+<body><header class="top"><b>🏞️ 六上自然｜3-1 大地的變動與影響</b><a href="index.html">回互動科學實驗室</a></header>
+<div class="outer"><main class="slide" id="slide" aria-live="polite"></main><div class="foot"><button id="prev">← 上一頁</button><span id="counter" class="muted"></span><button id="next">下一頁 →</button><button id="full">⛶ 全螢幕</button></div><div class="progress"><span id="bar"></span></div><p class="disclaimer">依上傳的「3-1.pptx」教材文字整理的網頁教學版；原檔共36頁，其中部分頁面為純圖片，本版並非原PowerPoint逐頁原樣重現。可使用方向鍵或畫面按鈕切換。</p></div>
+<script>
+const pages=[
+['封面','3-1 大地的變動與影響','河流、坡度與海浪如何塑造地表？','🌎🏞️'],
+['觀察','地表一直在改變','太魯閣峽谷、基隆河壺穴、草漯沙丘、和平島豆腐岩：這些地形是怎麼形成的？','🏔️🌊'],
+['課本 P68','地表變動的三種作用','侵蝕 → 搬運 → 堆積','💧➡️🪨'],
+['課本 P68','侵蝕作用','河水、波浪、冰川、風等自然力，破壞地表上的岩石。','🌊🪨'],
+['課本 P68','搬運作用','侵蝕後脫落或崩解的物質，繼續移動到其他地方。','🪨➡️'],
+['課本 P68','堆積作用','被搬運的物質在移動過程中逐漸沉澱、堆積下來。','🏖️'],
+['課本 P68–69','立霧溪上游','河道窄、坡度陡、水流急；侵蝕和搬運明顯。河床多有稜有角的大石塊。','🏔️💦'],
+['思考','為什麼上游的石塊常有稜有角？','想想：石塊剛從岩壁崩落，與經過長距離搬運的石頭，有什麼不同？','🪨❓'],
+['課本 P68–69','立霧溪中游','河道漸寬、坡度較緩、水流減緩；河床常有光滑、圓潤的鵝卵石。','🌊🪨'],
+['課本 P68–69','立霧溪下游','河道寬廣、地勢平坦、水流緩慢；堆積明顯，常見泥和細沙，出海口有時形成三角洲。','🏞️'],
+['比較','上游、中游、下游','上游：急流、大石塊｜中游：較緩、鵝卵石｜下游：緩流、泥沙堆積','🏔️ → 🏞️ → 🌊'],
+['課本 P69','曲流','河流彎曲的地方，兩岸流速不同，侵蝕和堆積情形也不同。','〰️'],
+['課本 P69','凹岸與凸岸','凹岸：流速較快、侵蝕較明顯。凸岸：流速較慢、堆積較明顯。','↪️🪨'],
+['提問','坡度如何改變地表？','坡度較陡時，流水的侵蝕和搬運作用通常更明顯。','⛰️🌧️'],
+['課本 P71','山區邊坡防護','豪大雨時，陡坡較容易發生土石流等災害；山區常設置邊坡防護措施。','🌧️🛡️'],
+['課本 P72','海岸地形','海水也會侵蝕、搬運及堆積，塑造不同的海岸景觀。','🌊🏝️'],
+['課本 P72','海蝕地形','海蝕崖：陡峭崖壁。海蝕平臺：接近海平面的平坦岩臺。海蝕洞受侵蝕可能形成海蝕拱門。','🌊🪨'],
+['課本 P72','臺灣的海蝕地形','鼻頭角海蝕崖、澎湖七美海蝕平臺、蘭嶼情人洞。','🏝️'],
+['課本 P73','海積地形','海浪與海水搬運泥沙，並在某些地方堆積，形成沙灘、沙洲、陸連島等景觀。','🏖️'],
+['課本 P73','臺灣的海積地形','福隆沙灘、臺南七股新浮崙汕、臺東金樽陸連島。','🏝️🏖️'],
+['統整','地表變動的線索','看水流速度、坡度、顆粒大小與海岸外觀，推測是侵蝕、搬運還是堆積。','🔎🌎'],
+['課堂活動','你能解釋嗎？','為什麼曲流凹岸容易被侵蝕？為什麼河口常有泥沙堆積？','🙋‍♀️💡']
+];
+let i=0;const s=document.getElementById('slide');function render(){const [ey,h,p,emoji]=pages[i];s.innerHTML='<div class="eyebrow">'+ey+'</div><h1>'+h+'</h1><div class="scene">'+emoji+'</div><p>'+p+'</p>';document.getElementById('counter').textContent=(i+1)+' / '+pages.length;document.getElementById('bar').style.width=((i+1)/pages.length*100)+'%';document.getElementById('prev').disabled=i===0;document.getElementById('next').disabled=i===pages.length-1}document.getElementById('prev').onclick=()=>{i=Math.max(0,i-1);render()};document.getElementById('next').onclick=()=>{i=Math.min(pages.length-1,i+1);render()};document.getElementById('full').onclick=()=>document.documentElement.requestFullscreen?.();window.addEventListener('keydown',e=>{if(e.key==='ArrowRight'||e.key===' '){e.preventDefault();i=Math.min(pages.length-1,i+1);render()}if(e.key==='ArrowLeft'){i=Math.max(0,i-1);render()}});render();
+</script></body></html>
