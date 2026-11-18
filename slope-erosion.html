@@ -77,7 +77,7 @@ td.n{font-weight:800}
   </div>
 
   <div class="box">
-    <p class="leg"><span style="--c:#2a7fc1">清水（流動中）</span><span style="--c:#8a5a36">帶著泥沙的水（搬運）</span><span style="--c:#d9981f">橘黃色＝新堆積的泥沙</span><span style="--c:#222">虛線＝下雨前的土堆形狀（虛線內被挖掉＝侵蝕）</span></p>
+    <p class="leg"><span style="--c:#2a7fc1">清水（流動中）</span><span style="--c:#8a5a36">褐色泥水層、褐色大圓點＝水帶著泥沙（搬運）</span><span style="--c:#d9981f">橘黃色＝新堆積的泥沙</span><span style="--c:#222">虛線＝下雨前的形狀（虛線內被挖掉＝侵蝕；後方是土堆的其他剖面）</span></p>
   </div>
 
   <div class="pair"><div class="box">
@@ -102,68 +102,78 @@ td.n{font-weight:800}
 
 <script>
 const W=560,GY=200,X0=20,L=150,FOOT=X0+L,STEPS=1800;
-const G=0.05,FR=0.98,FF=0.993,CAP=0.6,KE=0.02,KD=0.03;
+const G=0.05,FR=0.98,FF=0.993,CAP=2,KE=0.02,KD=0.03;
 const $=id=>document.getElementById(id);
 const P={A:mk('A'),B:mk('B')};
 let rain=1.4,spf=2,pred=null,running=false,steps=0,tail=0,raf=0;
 
-function mk(k){const cv=$('c'+k);return{k,cv,x:cv.getContext('2d'),h:new Float32Array(W),o:new Float32Array(W),dep:new Float32Array(W),ps:[],dr:[],er:0,f:{e:0,t:0,d:0}}}
+const NL=5,OY=5;
+function mk(k){const cv=$('c'+k);return{k,cv,x:cv.getContext('2d'),ln:[],ps:[],dr:[],er:0,f:{e:0,t:0,d:0},flux:new Float32Array(W)}}
+function noise(){const r=[],a=new Float32Array(W);for(let k=0;k<W/8+2;k++)r.push(0.4+Math.random()*1.5);
+  for(let i=0;i<W;i++){const k=i/8|0,t=(i%8)/8;a[i]=r[k]*(1-t)+r[k+1]*t}return a}
 function init(p){
-  const deg=+$('s'+p.k).value,H=L*Math.tan(deg*Math.PI/180);
-  for(let i=0;i<W;i++)p.o[i]=i<X0?H:i<FOOT?H*(1-(i-X0)/L):0;
-  p.h.set(p.o);p.dep.fill(0);p.ps=[];p.dr=[];p.er=0;p.f={e:0,t:0,d:0};
+  const deg=+$('s'+p.k).value,H=L*Math.tan(deg*Math.PI/180);p.ln=[];
+  for(let z=0;z<NL;z++){const o=new Float32Array(W),b=noise();
+    for(let i=0;i<W;i++)o[i]=i<X0?H:i<FOOT?H*(1-(i-X0)/L)+(b[i]-1)*0.4:0;
+    p.ln.push({o,h:o.slice(),dep:new Float32Array(W),ero:noise()})}
+  p.ps=[];p.dr=[];p.er=0;p.f={e:0,t:0,d:0};p.flux.fill(0);
 }
 function step(p,on){
-  const h=p.h,dep=p.dep;
-  if(on){let n=rain;while(n>0){if(Math.random()<Math.min(1,n))p.dr.push({x:Math.random()*380,y:0});n--}}
-  for(let j=p.dr.length-1;j>=0;j--){const d=p.dr[j];d.y+=4;
-    if(d.y>=GY-h[d.x|0]){p.ps.push({x:d.x,v:0.02,l:0,a:0});p.dr[j]=p.dr[p.dr.length-1];p.dr.pop()}}
-  for(let j=p.ps.length-1;j>=0;j--){const q=p.ps[j];
+  if(on){let n=rain*3;while(n>0){if(Math.random()<Math.min(1,n))p.dr.push({x:Math.random()*380,y:0,z:(Math.random()*NL)|0});n--}}
+  for(let j=p.dr.length-1;j>=0;j--){const d=p.dr[j],h=p.ln[d.z].h;d.y+=4;
+    if(d.y>=GY-OY*d.z-h[d.x|0]){p.ps.push({x:d.x,z:d.z,v:0.02,l:0,a:0});p.dr[j]=p.dr[p.dr.length-1];p.dr.pop()}}
+  for(let j=p.ps.length-1;j>=0;j--){const q=p.ps[j],ln=p.ln[q.z],h=ln.h,dep=ln.dep;
     let i=Math.min(W-2,Math.max(1,q.x|0));
     const s=(h[i-1]-h[i+1])/2;
     q.v=Math.max(0,(q.v+G*s/Math.hypot(1,s))*(s>0.06?FR:FF));
     q.x+=q.v;q.a++;
     i=Math.min(W-2,Math.max(1,q.x|0));
     const cap=CAP*q.v*q.v;
-    if(q.l<cap){let e=Math.min((cap-q.l)*KE,h[i]);h[i]-=e;dep[i]=Math.max(0,dep[i]-e);q.l+=e;p.er+=e;p.f.e++}
+    if(q.l<cap){let e=Math.min((cap-q.l)*KE*ln.ero[i],h[i]);h[i]-=e;dep[i]=Math.max(0,dep[i]-e);q.l+=e;p.er+=e;p.f.e++}
     else{const d=(q.l-cap)*KD;h[i]+=d;dep[i]+=d;q.l-=d;p.f.d++}
     if(q.l>0.05)p.f.t++;
+    p.flux[i]+=q.l;
     if((q.v<0.03&&q.a>8)||q.a>700||q.x>=W-2){h[i]+=q.l;dep[i]+=q.l;p.ps[j]=p.ps[p.ps.length-1];p.ps.pop()}
+    else if(Math.random()<0.15){const nz=q.z+(Math.random()<.5?-1:1);if(nz>=0&&nz<NL&&p.ln[nz].h[i]<h[i]-0.25)q.z=nz}
   }
 }
-function slump(p){const h=p.h;for(let i=0;i<W-1;i++){const d=h[i]-h[i+1];
+function slump(p){for(const ln of p.ln){const h=ln.h;for(let i=0;i<W-1;i++){const d=h[i]-h[i+1];
   if(d>1.15){const m=.3*(d-1.15);h[i]-=m;h[i+1]+=m}else if(d<-1.15){const m=.3*(-d-1.15);h[i]+=m;h[i+1]-=m}
-  if(p.dep[i]>h[i])p.dep[i]=h[i]}}
-function stats(p){
-  let md=0,far=0,m=0,mx=0;
-  for(let i=0;i<W;i++){const d=p.o[i]-p.h[i];if(d>md)md=d;
-    if(i>=FOOT){if(p.dep[i]>0.4)far=i-FOOT;m+=p.dep[i];mx+=p.dep[i]*(i-FOOT)}}
-  return{depth:md/10,vol:p.er/100,far:far/10,ctr:m>1?mx/m/10:0,out:m/100};
-}
+  if(ln.dep[i]>h[i])ln.dep[i]=h[i]}}}
+function stats(p){let md=0,far=0,m=0,mx=0;
+  for(const ln of p.ln)for(let i=0;i<W;i++){const d=ln.o[i]-ln.h[i];if(d>md)md=d;
+    if(i>=FOOT){if(ln.dep[i]>0.4&&i-FOOT>far)far=i-FOOT;m+=ln.dep[i];mx+=ln.dep[i]*(i-FOOT)}}
+  return{depth:md/10,vol:p.er/NL/100,far:far/10,ctr:m>1?mx/m/10:0}}
 function draw(p){
-  const c=p.x,h=p.h;c.clearRect(0,0,W,230);
+  const c=p.x;c.clearRect(0,0,W,230);
   const sky=c.createLinearGradient(0,0,0,GY);sky.addColorStop(0,rainOnVis?'#9db4c4':'#cfe4f1');sky.addColorStop(1,'#e6f1f8');
   c.fillStyle=sky;c.fillRect(0,0,W,GY);
-  c.fillStyle='#8c8f86';c.fillRect(0,GY,W,28);
-  for(let i=0;i<W;i++){const t=GY-h[i];
-    c.fillStyle='#8a5a36';c.fillRect(i,t,1,h[i]+0.5);
-    if(p.dep[i]>0.3){c.fillStyle='#d9981f';c.fillRect(i,t,1,Math.min(h[i],p.dep[i]))}}
-  c.strokeStyle='#222';c.lineWidth=1.2;c.setLineDash([5,4]);c.beginPath();
-  for(let i=0;i<W;i++){const y=GY-p.o[i];i?c.lineTo(i,y):c.moveTo(i,y)}c.stroke();c.setLineDash([]);
-  c.fillStyle='#4f8a3a';for(let i=0;i<X0+L;i+=1){if(p.dep[i]<0.3&&p.o[i]-h[i]<0.3)c.fillRect(i,GY-h[i]-2,1,2)}
+  c.fillStyle='#8c8f86';c.fillRect(0,GY-OY*(NL-1),W,OY*(NL-1)+30);
+  for(let z=NL-1;z>=0;z--){const ln=p.ln[z],oy=GY-OY*z;
+    const soil=`rgb(${138+z*9},${90+z*11},${54+z*11})`;
+    for(let i=0;i<W;i++){const h=ln.h[i];if(h<0.4)continue;const t=oy-h;
+      c.fillStyle=soil;c.fillRect(i,t,1,h);
+      if(ln.dep[i]>0.3){c.fillStyle='#d9981f';c.fillRect(i,t,1,Math.min(h,ln.dep[i]))}
+      else if(i<FOOT&&ln.o[i]-h<0.3){c.fillStyle='#4f8a3a';c.fillRect(i,t-2,1,2)}}
+    if(z===0){c.strokeStyle='#222';c.lineWidth=1.2;c.setLineDash([5,4]);c.beginPath();
+      for(let i=0;i<W;i++){const y=oy-ln.o[i];i?c.lineTo(i,y):c.moveTo(i,y)}c.stroke();c.setLineDash([]);
+      const F=p.flux;c.fillStyle='rgba(105,68,38,.6)';
+      for(let i=1;i<W-1;i++){const f=(F[i-1]+F[i]+F[i+1])/3,th=Math.min(12,Math.sqrt(f)*1.4);
+        if(th>0.8)c.fillRect(i,oy-ln.h[i]-th,1,th);F[i-1]*=0.93}}
+    for(const q of p.ps){if(q.z!==z)continue;const m=Math.min(1,q.l/0.5);
+      c.fillStyle=`rgb(${Math.round(42+110*m)},${Math.round(127-55*m)},${Math.round(193-150*m)})`;
+      c.beginPath();c.arc(q.x,oy-ln.h[q.x|0]-2,2+1.6*m,0,6.3);c.fill()}
+  }
   c.strokeStyle='#e8f4ff';c.lineWidth=1.2;c.beginPath();
   for(const d of p.dr){c.moveTo(d.x,d.y-6);c.lineTo(d.x,d.y)}c.stroke();
-  for(const q of p.ps){const m=Math.min(1,q.l/1.2);
-    c.fillStyle=`rgb(${Math.round(42+96*m)},${Math.round(127-37*m)},${Math.round(193-139*m)})`;
-    c.beginPath();c.arc(q.x,GY-h[q.x|0]-1.5,2.1,0,6.3);c.fill()}
   c.fillStyle='#fff';c.font='14px sans-serif';c.textAlign='center';c.strokeStyle='#444';c.lineWidth=1;
   for(let k=0;k<=40;k+=5){const x=FOOT+k*10;if(x>W-10)break;
     c.beginPath();c.moveTo(x,GY);c.lineTo(x,GY+(k%10?5:9));c.stroke();if(k%10===0)c.fillText(k?k+' 公分':'坡腳',x,GY+24)}
   const sv=stats(p);
-  if(sv.far>0.5){const x=FOOT+sv.far*10;
+  if(sv.far>0.5){const x=FOOT+sv.far*10,t='最遠堆到 '+sv.far.toFixed(0)+' 公分';
     c.strokeStyle='#b3261e';c.fillStyle='#b3261e';c.lineWidth=2;
     c.beginPath();c.moveTo(FOOT,GY-24);c.lineTo(x,GY-24);c.moveTo(FOOT,GY-30);c.lineTo(FOOT,GY-18);c.moveTo(x,GY-34);c.lineTo(x,GY);c.stroke();
-    c.font='bold 14px sans-serif';c.textAlign='center';c.lineWidth=3;c.strokeStyle='#fff';c.strokeText('最遠堆到 '+sv.far.toFixed(0)+' 公分',(FOOT+x)/2,GY-38);c.fillText('最遠堆到 '+sv.far.toFixed(0)+' 公分',(FOOT+x)/2,GY-38);
+    c.font='bold 14px sans-serif';c.lineWidth=3;c.strokeStyle='#fff';c.strokeText(t,(FOOT+x)/2,GY-38);c.fillText(t,(FOOT+x)/2,GY-38);
     c.strokeStyle='#444';c.lineWidth=1;c.font='14px sans-serif'}
   c.textAlign='left';c.fillStyle='#223';c.fillText('水往右流 →',8,18);
 }
@@ -189,7 +199,7 @@ function loop(){
 }
 function finish(){
   running=false;rainOnVis=false;
-  for(const p of Object.values(P)){for(const q of p.ps){p.h[q.x|0]+=q.l;p.dep[q.x|0]+=q.l}p.ps=[];p.dr=[]}
+  for(const p of Object.values(P)){for(const q of p.ps){const l=p.ln[q.z];l.h[q.x|0]+=q.l;l.dep[q.x|0]+=q.l}p.ps=[];p.dr=[]}
   slump(P.A);slump(P.B);draw(P.A);draw(P.B);
   for(const p of Object.values(P))p.f={e:0,t:0,d:0};
   ui();$('go').disabled=false;$('go').textContent='▶ 再下一次雨（先重設土堆）';
